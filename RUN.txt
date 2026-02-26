@@ -1,0 +1,94 @@
+# Vrinaa Occasions Website - Running Instructions
+
+## Prerequisites
+- Node.js (v18+)
+- Python (v3.10+)
+- MongoDB (local or Atlas)
+
+## Backend Setup
+
+1. Navigate to backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Configure environment variables:
+   Create a `.env` file in the backend directory with the following:
+   ```
+   MONGO_URL=your_mongodb_connection_string
+   DB_NAME=vrinaa_occasions
+   CORS_ORIGINS=http://localhost:3000
+   ```
+
+5. Run the backend server:
+   ```bash
+   python server.py
+   ```
+   Or with uvicorn:
+   ```bash
+   uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+   ```
+
+   The backend will run on http://localhost:8000
+
+## Frontend Setup
+
+1. Navigate to frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies (using yarn):
+   ```bash
+   yarn install
+   ```
+
+3. Run the frontend development server:
+   ```bash
+   yarn start
+   ```
+
+   The frontend will run on http://localhost:3000
+
+## Running Both Services
+
+You need to run both backend and frontend simultaneously:
+
+### Option 1: Terminal 1 - Backend
+```bash
+cd backend
+python server.py
+```
+
+### Option 2: Terminal 2 - Frontend
+```bash
+cd frontend
+yarn start
+```
+
+## Build for Production
+
+Frontend:
+```bash
+cd frontend
+yarn build
+```
+
+The built files will be in `frontend/build/`
+
+## Notes
+- Frontend uses React 19 with craco, Tailwind CSS, and shadcn/ui components
+- Backend uses FastAPI with Motor (async MongoDB driver)
+- API endpoints are prefixed with /api
+

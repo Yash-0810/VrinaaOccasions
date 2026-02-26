@@ -1,0 +1,6 @@
+/Users/yash/Coding/webistes/vrinaa-occasions-website/backend/server.py:87: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fINFO:     127.0.0.1:64545 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64548 - "GET /api/ HTTP/1.1" 200 OK
