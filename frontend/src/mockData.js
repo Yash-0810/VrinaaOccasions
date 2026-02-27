@@ -11,95 +11,95 @@ export const eventCategories = [
   {
     id: 1,
     title: "Birthday Parties",
-    description: "Create magical birthday celebrations with our bespoke decoration designs tailored to all ages.",
-    image: "https://images.unsplash.com/photo-1741969494307-55394e3e4071",
-    features: ["Custom themes", "Balloon arrangements", "Table decorations", "Photo backdrops"]
+    description: "Create magical birthday celebrations with our professional decoration designs for intimate gatherings and special milestones.",
+    image: "https://images.unsplash.com/photo-1755704282977-340323fa52df",
+    features: ["Custom themes", "Floral arrangements", "Table decorations", "Photo backdrops"]
   },
   {
     id: 2,
-    title: "Anniversary Celebrations",
-    description: "Celebrate love and togetherness with elegant, romantic decoration setups.",
-    image: "https://images.unsplash.com/photo-1685031068031-1c780c557190",
-    features: ["Romantic lighting", "Floral arrangements", "Personalized setups", "Intimate settings"]
+    title: "Wedding & Anniversary",
+    description: "Beautiful intimate Indian wedding decorations with traditional mandap setups perfect for home ceremonies and small venues.",
+    image: "https://images.unsplash.com/photo-1587271636175-90d58cdad458",
+    features: ["Small mandap decoration", "Traditional elements", "Home ceremonies", "Floral setups"]
   },
   {
     id: 3,
-    title: "Wedding Decorations",
-    description: "Exquisite wedding decor that transforms your special day into a fairytale.",
-    image: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2",
-    features: ["Grand entrances", "Mandap decoration", "Venue styling", "Floral designs"]
+    title: "Engagement Ceremonies",
+    description: "Beautiful engagement decoration with personalized touches for your special moment in intimate settings.",
+    image: "https://images.unsplash.com/photo-1744891471118-f74c0453cd21",
+    features: ["Colorful setups", "Traditional decor", "Photo opportunities", "Custom styling"]
   },
   {
     id: 4,
-    title: "Office Parties",
-    description: "Professional and vibrant corporate event decorations that boost team spirit.",
-    image: "https://images.unsplash.com/photo-1766154559837-d295d7510480",
-    features: ["Corporate themes", "Branding integration", "Professional setup", "Team celebrations"]
+    title: "Office & Corporate Parties",
+    description: "Professional decorations for small corporate celebrations, team parties, and office milestone events.",
+    image: "https://images.unsplash.com/photo-1768776183877-e8f3dfc91f40",
+    features: ["Elegant table setups", "Professional themes", "Office parties", "Corporate events"]
   },
   {
     id: 5,
-    title: "Engagement Ceremonies",
-    description: "Sophisticated decoration for your engagement celebration.",
-    image: "https://images.pexels.com/photos/688293/wedding-bride-groom-balloon-688293.jpeg",
-    features: ["Romantic setups", "Photo opportunities", "Elegant styling", "Custom proposals"]
+    title: "Baby Showers",
+    description: "Adorable and charming decorations for welcoming your little one with cute themes and pastel colors.",
+    image: "https://images.pexels.com/photos/36079150/pexels-photo-36079150.jpeg",
+    features: ["Baby themes", "Pastel decorations", "Cute props", "Balloon arrangements"]
   },
   {
     id: 6,
-    title: "Baby Showers",
-    description: "Adorable and charming decorations for welcoming your little one.",
-    image: "https://images.pexels.com/photos/36079140/pexels-photo-36079140.jpeg",
-    features: ["Cute themes", "Pastel colors", "Fun props", "Memory corners"]
+    title: "Special Milestones",
+    description: "Celebrate life's special moments with custom decoration solutions for any milestone celebration.",
+    image: "https://images.unsplash.com/photo-1758870041148-31d28fdf34d9",
+    features: ["Number displays", "Custom designs", "Themed setups", "Personalized touches"]
   }
 ];
 
 export const galleryImages = [
   {
     id: 1,
-    url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2",
-    category: "Wedding",
-    alt: "Luxury wedding decoration with golden florals"
+    url: "https://images.unsplash.com/photo-1755704282977-340323fa52df",
+    category: "Birthday",
+    alt: "Elegant birthday party decoration with florals"
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1741969494307-55394e3e4071",
-    category: "Birthday",
-    alt: "Elegant pink and gold balloon decoration"
+    url: "https://images.unsplash.com/photo-1587271636175-90d58cdad458",
+    category: "Wedding",
+    alt: "Intimate Indian wedding mandap ceremony"
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1632316962873-47ee3d309f02",
-    category: "Wedding",
-    alt: "Elegant wedding reception table setup"
+    url: "https://images.unsplash.com/photo-1758870041148-31d28fdf34d9",
+    category: "Birthday",
+    alt: "Illuminated number display with balloons"
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1601268588577-319223ba7cb3",
-    category: "Birthday",
-    alt: "Silver happy birthday balloon decoration"
+    url: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e",
+    category: "Wedding",
+    alt: "Small garden mandap wedding decoration"
   },
   {
     id: 5,
-    url: "https://images.unsplash.com/photo-1560117531-02eeab8e3593",
-    category: "Wedding",
-    alt: "Wedding cake with floral arrangements"
+    url: "https://images.unsplash.com/photo-1768776183877-e8f3dfc91f40",
+    category: "Corporate",
+    alt: "Elegant party table decoration setup"
   },
   {
     id: 6,
-    url: "https://images.unsplash.com/photo-1625038032515-308ab14d10b9",
-    category: "Wedding",
-    alt: "Rustic elegant wedding venue"
+    url: "https://images.pexels.com/photos/36079150/pexels-photo-36079150.jpeg",
+    category: "Baby Shower",
+    alt: "Baby shower teddy bear balloon decoration"
   },
   {
     id: 7,
-    url: "https://images.pexels.com/photos/29655738/pexels-photo-29655738.jpeg",
+    url: "https://images.unsplash.com/photo-1744891471118-f74c0453cd21",
     category: "Wedding",
-    alt: "Outdoor garden wedding setup"
+    alt: "Colorful intimate Indian wedding mandap"
   },
   {
     id: 8,
-    url: "https://images.pexels.com/photos/9214972/pexels-photo-9214972.jpeg",
-    category: "Baby Shower",
-    alt: "Blue themed baby shower decoration"
+    url: "https://images.unsplash.com/photo-1751257752208-64b3e929a125",
+    category: "Corporate",
+    alt: "Elegant table decoration for corporate events"
   }
 ];
 
