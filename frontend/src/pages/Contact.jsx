@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { contactInfo } from '@/mockData';
 import { Phone, Mail, MapPin, Clock, Instagram, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,8 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { Card, CardContent } from '@/components/ui/card';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const formRef = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,23 +25,38 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Mock form submission
-    toast.success("Inquiry Submitted!", {
-      description: "We'll get back to you within 24 hours.",
-    });
+    try {
+      await emailjs.sendForm(
+        'service_heuxk2k',
+        'template_7s1eg5k',
+        formRef.current,
+        'ZP1l01ijVcijrBEfF'
+      );
+      
+      toast.success("Inquiry Submitted!", {
+        description: "We'll get back to you within 24 hours.",
+      });
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventType: '',
-      eventDate: '',
-      message: ''
-    });
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventType: '',
+        eventDate: '',
+        message: ''
+      });
+    } catch (error) {
+      toast.error("Failed to send inquiry. Please try again or contact us directly.", {
+        description: error.text || "Unknown error occurred",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const whatsappMessage = encodeURIComponent("Hello! I'd like to inquire about event decoration services.");
@@ -175,7 +193,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold text-[#1a1918] mb-8">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+<form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[#1a1918] mb-2">
                     Your Name *
