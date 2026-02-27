@@ -31,10 +31,10 @@ const Contact = () => {
     
     try {
       await emailjs.sendForm(
-        'service_heuxk2k',
-        'template_7s1eg5k',
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        'ZP1l01ijVcijrBEfF'
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
       
       toast.success("Inquiry Submitted!", {
