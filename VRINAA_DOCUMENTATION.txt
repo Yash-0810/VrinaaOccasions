@@ -1,0 +1,581 @@
+================================================================================
+                    VRINAA OCCASIONS WEBSITE - TECHNICAL DOCUMENTATION
+================================================================================
+
+TABLE OF CONTENTS:
+1. Project Overview
+2. Technology Stack
+3. Architecture Diagram
+4. Frontend Details
+5. Backend Details
+6. Database
+7. API Endpoints
+8. Third-Party Integrations
+9. Deployment
+10. Development Workflow
+11. File Structure
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+Vrinaa Occasions is a event decoration services website built with a modern
+full-stack architecture. The site showcases event decoration services,
+allows users to view galleries, event types, and contact the business via
+a contact form with EmailJS integration.
+
+Key Features:
+- Event decoration service showcase
+- Photo gallery with event images
+- Contact form with email notifications (EmailJS)
+- Responsive design for all devices
+- Multiple pages: Home, About, Events, Gallery, Contact, Terms
+
+================================================================================
+2. TECHNOLOGY STACK
+================================================================================
+
+----------------
+FRONTEND
+----------------
+- React 19.0.0 (UI Framework)
+- React Router DOM 7.5.1 (Routing)
+- Tailwind CSS 3.4.17 (Styling)
+- shadcn/ui (Component Library - Radix UI primitives)
+- Lucide React 0.507.0 (Icons)
+- React Hook Form 7.56.2 (Form handling)
+- Zod 3.24.4 (Validation)
+- Sonner 2.0.3 (Toast notifications)
+- Recharts 3.6.0 (Charts/data visualization)
+- Embla Carousel 8.6.0 (Carousel component)
+- Date-fns 4.1.0 (Date utilities)
+- Axios 1.8.4 (HTTP client)
+- EmailJS Browser 4.4.1 (Email service)
+
+Build Tools:
+- Craco 7.1.0 (Create React App Configuration Override)
+- Webpack (bundler)
+- Babel (transpiler)
+- PostCSS (CSS processing)
+- ESLint 9.23.0 (Linting)
+
+----------------
+BACKEND
+----------------
+- Python 3.10+ (Runtime)
+- FastAPI 0.110.1 (Web Framework)
+- Uvicorn 0.25.0 (ASGI Server)
+- Motor 3.3.1 (Async MongoDB Driver)
+- Pydantic 2.6.4 (Data Validation)
+- Python-dotenv 1.0.1 (Environment Variables)
+- MongoDB (Database)
+
+Optional/Available Dependencies:
+- Boto3 (AWS SDK)
+- JWT/PyJWT (Authentication)
+- Pandas/Numpy (Data processing)
+- Pytest (Testing)
+- Black/Flake8/ESLint (Code quality)
+
+================================================================================
+3. ARCHITECTURE DIAGRAM
+================================================================================
+
+                            ┌─────────────────────────────────────────────┐
+                            │              USER'S BROWSER                   │
+                            │                                             │
+                            │  ┌─────────────────────────────────────────┐ │
+                            │  │         REACT FRONTEND                  │ │
+                            │  │                                         │ │
+                            │  │  ┌─────────┐  ┌─────────┐  ┌─────────┐ │ │
+                            │  │  │  Home   │  │  About  │  │ Events  │ │ │
+                            │  │  │  Page   │  │  Page   │  │  Page   │ │ │
+                            │  │  └────┬────┘  └────┬────┘  └────┬────┘ │ │
+                            │  │       │            │            │       │ │
+                            │  │  ┌────┴────┐  ┌────┴────┐  ┌────┴────┐ │ │
+                            │  │  │ Gallery │  │Contact │  │ Terms   │ │ │
+                            │  │  │  Page   │  │  Page   │  │  Page   │ │ │
+                            │  │  └────┬────┘  └────┬────┘  └────┬────┘ │ │
+                            │  │       │            │            │       │ │
+                            │  │       └────────────┼────────────┘       │ │
+                            │  │                    │                    │ │
+                            │  │            ┌───────�───────┐            │ │
+                            │  │            │  Components   │            │ │
+                            │  │            │  Header       │            │ │
+                            │  │            │  Footer       │            │ │
+                            │  │            │  UI Components│            │ │
+                            │  │            └───────────────┘            │ │
+                            │  │                    │                    │ │
+                            │  │                    ▼                    │ │
+                            │  │          ┌─────────────────┐            │ │
+                            │  │          │   EmailJS SDK   │            │ │
+                            │  │          │ (Send Emails)   │            │ │
+                            │  │          └────────┬────────┘            │ │
+                            │  └─────────────────────┼──────────────────┘ │
+                            │                        │                     │
+                            └────────────────────────┼─────────────────────┘
+                                                 │ HTTPS
+                                                 ▼
+                            ┌─────────────────────────────────────────────┐
+                            │              BACKEND SERVER                  │
+                            │              (FastAPI + Uvicorn)            │
+                            │              Port: 8000                     │
+                            │                                             │
+                            │  ┌─────────────────────────────────────────┐ │
+                            │  │           API ROUTER                    │ │
+                            │  │                                         │ │
+                            │  │  ┌───────────────────────────────────┐  │ │
+                            │  │  │ GET  /api/       - Root          │  │ │
+                            │  │  │ POST /api/status - Create Status │  │ │
+                            │  │  │ GET /api/status  - Get All Status │  │ │
+                            │  │  └───────────────────────────────────┘  │ │
+                            │  │                    │                    │ │
+                            │  │                    ▼                    │ │
+                            │  │  ┌───────────────────────────────────┐  │ │
+                            │  │  │       CORS MIDDLEWARE             │  │ │
+                            │  │  │  (Allow localhost:3000)           │  │ │
+                            │  │  └───────────────────────────────────┘  │ │
+                            │  └─────────────────────┬───────────────────┘ │
+                            │                        │                      │
+                            └────────────────────────┼──────────────────────┘
+                                                 │
+                            ┌──────────────────────┼──────────────────────┐
+                            │                      │                      │
+                            ▼                      ▼                      ▼
+                    ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+                    │  MongoDB    │      │   MongoDB   │      │   MongoDB   │
+                    │   Atlas     │      │   Atlas     │      │   Atlas     │
+                    │  (Cloud)    │      │  (Cloud)    │      │  (Cloud)    │
+                    │             │      │             │      │             │
+                    │  Database: │      │  Collection │      │  Document:  │
+                    │  vrinaa_    │ ──▶  │  status_    │ ──▶  │  {          │
+                    │  occasions │      │   checks    │      │    id,      │
+                    │             │      │             │      │    client_  │
+                    └─────────────┘      └─────────────┘      │    name,    │
+                                                              │    time-    │
+                                                              │    stamp    │
+                                                              │  }          │
+                                                              └─────────────┘
+
+================================================================================
+4. FRONTEND DETAILS
+================================================================================
+
+----------------
+PROJECT STRUCTURE
+----------------
+frontend/
+├── public/
+│   ├── index.html          # Main HTML template
+│   └── logo.PNG            # Website logo
+├── src/
+│   ├── components/
+│   │   ├── ui/             # shadcn/ui components
+│   │   │   ├── button.jsx
+│   │   │   ├── card.jsx
+│   │   │   ├── input.jsx
+│   │   │   ├── textarea.jsx
+│   │   │   ├── dialog.jsx
+│   │   │   ├── toast.jsx
+│   │   │   └── ... (30+ UI components)
+│   │   ├── Header.jsx      # Navigation header
+│   │   └── Footer.jsx      # Site footer
+│   ├── pages/
+│   │   ├── Home.jsx        # Homepage
+│   │   ├── About.jsx       # About page
+│   │   ├── Events.jsx      # Events page
+│   │   ├── Gallery.jsx     # Gallery page
+│   │   ├── Contact.jsx     # Contact form (EmailJS)
+│   │   └── Terms.jsx       # Terms & conditions
+│   ├── hooks/
+│   │   └── use-toast.js    # Toast hook
+│   ├── lib/
+│   │   └── utils.js        # Utility functions
+│   ├── mockData.js         # Static data (contact info, etc.)
+│   ├── App.js              # Main app component with routing
+│   ├── App.css             # Global styles
+│   ├── index.js            # Entry point
+│   └── index.css           # Tailwind imports
+├── package.json
+├── tailwind.config.js
+├── craco.config.js
+└── postcss.config.js
+
+----------------
+ROUTING (React Router)
+----------------
+/           → Home
+/about      → About
+/events     → Events
+/gallery    → Gallery
+/contact    → Contact (EmailJS form)
+/terms      → Terms & Conditions
+
+----------------
+STYLING APPROACH
+----------------
+- Tailwind CSS for utility-first styling
+- Custom color palette: #1a1918 (dark), #61525a (primary), #736c64 (muted)
+- Responsive breakpoints: mobile, tablet, desktop
+- shadcn/ui components with Radix UI primitives
+- CSS custom properties for theming
+
+----------------
+CONTACT FORM (EmailJS Integration)
+----------------
+Flow:
+1. User fills form (name, email, phone, eventType, eventDate, message)
+2. User clicks "Submit Inquiry"
+3. React captures form data via useState
+4. EmailJS SDK sends data to EmailJS service
+5. EmailJS forwards email to configured recipient
+6. Success/error toast notification shown
+
+Environment Variables (in .env.local):
+- REACT_APP_EMAILJS_SERVICE_ID=service_heuxk2k
+- REACT_APP_EMAILJS_TEMPLATE_ID=template_7s1eg5k
+- REACT_APP_EMAILJS_PUBLIC_KEY=ZP1l01ijVcijrBEfF
+
+================================================================================
+5. BACKEND DETAILS
+================================================================================
+
+----------------
+SERVER CONFIGURATION
+----------------
+backend/
+├── server.py              # Main FastAPI application
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables
+└── venv/                  # Virtual environment (local)
+
+----------------
+FASTAPI APPLICATION STRUCTURE
+----------------
+server.py
+
+1. Imports
+   - FastAPI, APIRouter (web framework)
+   - Motor (MongoDB async driver)
+   - Pydantic (data validation)
+   - dotenv (environment variables)
+   - CORS middleware
+
+2. Configuration
+   - Load .env file
+   - MongoDB connection via MONGO_URL
+   - Database name from DB_NAME
+   - CORS origins from CORS_ORIGINS
+
+3. Models (Pydantic)
+   - StatusCheck: Data model for status check records
+     * id: UUID string
+     * client_name: string
+     * timestamp: datetime
+
+4. Routes (APIRouter with /api prefix)
+   - GET  /api/           : Root endpoint - returns {"message": "Hello World"}
+   - POST /api/status     : Create a new status check
+   - GET /api/status      : Get all status checks
+
+5. Middleware
+   - CORS: Allows requests from http://localhost:3000
+
+6. Events
+   - on shutdown: Close MongoDB connection
+
+----------------
+RUNNING THE BACKEND
+----------------
+Development:
+   cd backend
+   python server.py
+   # OR
+   uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+
+Production:
+   uvicorn server:app --host 0.0.0.0 --port 8000
+
+================================================================================
+6. DATABASE
+================================================================================
+
+----------------
+MONGODB
+----------------
+Provider: MongoDB Atlas (Cloud)
+Connection: Via MONGO_URL environment variable
+
+Database: vrinaa_occasions
+
+Collections:
+- status_checks
+  * Stores status check submissions
+  * Fields: id, client_name, timestamp
+
+Example Document:
+{
+  "id": "uuid-string",
+  "client_name": "Example Client",
+  "timestamp": "2024-01-01T12:00:00Z"
+}
+
+================================================================================
+7. API ENDPOINTS
+================================================================================
+
+Base URL: http://localhost:8000/api
+
+----------------
+ENDPOINTS
+----------------
+
+1. GET /
+   URL: http://localhost:8000/api/
+   Description: Root endpoint for health check
+   Response: {"message": "Hello World"}
+
+2. POST /status
+   URL: http://localhost:8000/api/status
+   Description: Create a new status check record
+   Request Body:
+   {
+     "client_name": "string"
+   }
+   Response:
+   {
+     "id": "uuid-string",
+     "client_name": "string",
+     "timestamp": "datetime"
+   }
+
+3. GET /status
+   URL: http://localhost:8000/api/status
+   Description: Get all status check records
+   Response: Array of status check objects
+   [
+     {
+       "id": "uuid-string",
+       "client_name": "string",
+       "timestamp": "datetime"
+     }
+   ]
+
+================================================================================
+8. THIRD-PARTY INTEGRATIONS
+================================================================================
+
+1. EmailJS (email service)
+   - Purpose: Send contact form submissions via email
+   - Credentials needed:
+     * Service ID
+     * Template ID
+     * Public Key
+   - Integration: @emailjs/browser SDK in frontend
+
+2. MongoDB Atlas (database)
+   - Purpose: Store backend data
+   - Connection: Via connection string (MONGO_URL)
+
+3. Vercel (deployment)
+   - Purpose: Host and deploy the frontend
+   - Integration: GitHub push triggers automatic deployment
+
+================================================================================
+9. DEPLOYMENT
+================================================================================
+
+----------------
+LOCAL DEVELOPMENT
+----------------
+Prerequisites:
+- Node.js v18+
+- Python v3.10+
+- MongoDB (local or Atlas)
+
+Frontend:
+   cd frontend
+   npm install
+   npm start
+   # Runs on http://localhost:3000
+
+Backend:
+   cd backend
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   python server.py
+   # Runs on http://localhost:8000
+
+----------------
+VERCEL DEPLOYMENT (Frontend)
+----------------
+1. Push code to GitHub
+2. Import project in Vercel
+3. Configure:
+   - Framework: Create React App
+   - Build Command: npm run build
+   - Output Directory: build
+4. Add Environment Variables:
+   - REACT_APP_EMAILJS_SERVICE_ID
+   - REACT_APP_EMAILJS_TEMPLATE_ID
+   - REACT_APP_EMAILJS_PUBLIC_KEY
+5. Deploy
+
+----------------
+ENVIRONMENT VARIABLES
+----------------
+Backend (.env):
+   MONGO_URL=mongodb+srv://...
+   DB_NAME=vrinaa_occasions
+   CORS_ORIGINS=http://localhost:3000
+
+Frontend (.env.local):
+   REACT_APP_EMAILJS_SERVICE_ID=service_heuxk2k
+   REACT_APP_EMAILJS_TEMPLATE_ID=template_7s1eg5k
+   REACT_APP_EMAILJS_PUBLIC_KEY=ZP1l01ijVcijrBEfF
+
+================================================================================
+10. DEVELOPMENT WORKFLOW
+================================================================================
+
+1. Clone repository
+2. Install dependencies (frontend & backend)
+3. Configure environment variables
+4. Run local development servers
+5. Make changes
+6. Test locally
+7. Push to GitHub
+8. Vercel auto-deploys
+
+----------------
+GIT WORKFLOW
+----------------
+git add .
+git commit -m "Description of changes"
+git push origin main
+
+Vercel automatically:
+- Detects push to main
+- Runs build command
+- Deploys to production URL
+
+================================================================================
+11. FILE STRUCTURE (COMPLETE)
+================================================================================
+
+vrinaa-occasions-website/
+├── RUN.txt                          # Running instructions
+├── logo.PNG                         # Website logo
+├── Pre_Requisite-SellerandServiceProviders_GeM_4.0.pdf
+│
+├── backend/
+│   ├── server.py                    # FastAPI application
+│   ├── requirements.txt             # Python dependencies
+│   ├── .env                         # Environment variables
+│   ├── backend.log                  # Server logs
+│   └── venv/                        # Virtual environment
+│
+└── frontend/
+    ├── package.json                 # Node dependencies
+    ├── yarn.lock                    # Yarn lock file
+    ├── package-lock.json            # NPM lock file
+    ├── craco.config.js              # Craco configuration
+    ├── tailwind.config.js           # Tailwind configuration
+    ├── postcss.config.js            # PostCSS configuration
+    ├── jsconfig.json                # JS config for aliases
+    ├── .gitignore
+    ├── README.md
+    ├── components.json               # shadcn/ui components config
+    │
+    ├── public/
+    │   ├── index.html               # HTML template
+    │   ├── logo.PNG                 # Logo image
+    │   └── .DS_Store
+    │
+    └── src/
+        ├── index.js                 # Entry point
+        ├── index.css                # Global CSS + Tailwind
+        ├── App.js                   # Main app with routing
+        ├── App.css                  # Global styles
+        ├── mockData.js              # Static data
+        │
+        ├── components/
+        │   ├── Header.jsx           # Navigation header
+        │   ├── Footer.jsx           # Footer component
+        │   ├── ui/                  # shadcn/ui components
+        │   │   ├── accordion.jsx
+        │   │   ├── alert-dialog.jsx
+        │   │   ├── alert.jsx
+        │   │   ├── aspect-ratio.jsx
+        │   │   ├── avatar.jsx
+        │   │   ├── badge.jsx
+        │   │   ├── breadcrumb.jsx
+        │   │   ├── button.jsx
+        │   │   ├── calendar.jsx
+        │   │   ├── card.jsx
+        │   │   ├── carousel.jsx
+        │   │   ├── checkbox.jsx
+        │   │   ├── collapsible.jsx
+        │   │   ├── command.jsx
+        │   │   ├── context-menu.jsx
+        │   │   ├── dialog.jsx
+        │   │   ├── drawer.jsx
+        │   │   ├── dropdown-menu.jsx
+        │   │   ├── form.jsx
+        │   │   ├── hover-card.jsx
+        │   │   ├── input-otp.jsx
+        │   │   ├── input.jsx
+        │   │   ├── label.jsx
+        │   │   ├── menubar.jsx
+        │   │   ├── navigation-menu.jsx
+        │   │   ├── pagination.jsx
+        │   │   ├── popover.jsx
+        │   │   ├── progress.jsx
+        │   │   ├── radio-group.jsx
+        │   │   ├── resizable.jsx
+        │   │   ├── scroll-area.jsx
+        │   │   ├── select.jsx
+        │   │   ├── separator.jsx
+        │   │   ├── sheet.jsx
+        │   │   ├── skeleton.jsx
+        │   │   ├── slider.jsx
+        │   │   ├── sonner.jsx
+        │   │   ├── switch.jsx
+        │   │   ├── table.jsx
+        │   │   ├── tabs.jsx
+        │   │   ├── textarea.jsx
+        │   │   ├── toast.jsx
+        │   │   ├── toaster.jsx
+        │   │   ├── toggle-group.jsx
+        │   │   ├── toggle.jsx
+        │   │   └── tooltip.jsx
+        │   │
+        │   └── sonner.jsx           # Toast component
+        │
+        ├── pages/
+        │   ├── Home.jsx             # Homepage
+        │   ├── About.jsx            # About page
+        │   ├── Events.jsx           # Events page
+        │   ├── Gallery.jsx          # Gallery page
+        │   ├── Contact.jsx         # Contact form (EmailJS)
+        │   └── Terms.jsx            # Terms page
+        │
+        ├── hooks/
+        │   └── use-toast.js         # Toast hook
+        │
+        ├── lib/
+        │   └── utils.js             # Utility functions
+        │
+        └── plugins/                 # Custom webpack plugins
+            ├── health-check/
+            │   ├── health-endpoints.js
+            │   └── webpack-health-plugin.js
+            └── visual-edits/
+                ├── babel-metadata-plugin.js
+                └── dev-server-setup.js
+
+================================================================================
+                              END OF DOCUMENTATION
+================================================================================
+
