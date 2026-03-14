@@ -2,6 +2,8 @@ import React from 'react';
 import { aboutContent } from '@/mockData';
 import { Card, CardContent } from '@/components/ui/card';
 import { Target, Heart, Award, Users } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   const valueIcons = {
@@ -59,6 +61,13 @@ const About = () => {
             <p className="text-lg text-[#736c64] max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>
+          </div>
+          <div className="text-center mb-16">
+            <Link to="/what-makes-us-special" className="inline-flex">
+              <Button size="lg" className="bg-[#61525a] hover:bg-[#4a3f45] text-white px-12 py-6 text-xl rounded-2xl shadow-xl">
+                Discover What Makes Us Special
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

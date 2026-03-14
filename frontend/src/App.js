@@ -9,6 +9,7 @@ import Events from "@/pages/Events";
 import Gallery from "@/pages/Gallery";
 import Contact from "@/pages/Contact";
 import Terms from "@/pages/Terms";
+import WhatMakesUsSpecial from "@/pages/WhatMakesUsSpecial";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/what-makes-us-special" element={<WhatMakesUsSpecial />} />
         </Routes>
         <Footer />
         <Toaster />
