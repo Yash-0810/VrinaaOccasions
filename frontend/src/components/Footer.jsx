@@ -65,6 +65,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/what-makes-us-special"
+                  className="text-[#bbb5ae] hover:text-white transition-colors duration-300 text-sm"
+                >
+                  What Makes Us Special
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/contact"
                   className="text-[#bbb5ae] hover:text-white transition-colors duration-300 text-sm"
                 >
