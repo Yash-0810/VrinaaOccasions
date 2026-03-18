@@ -1,8 +1,7 @@
-# What Makes Us Special Page
+# TODO: Remove yellow bg emojis from WhatMakesUsSpecial page
 
-## Steps
-- [x] 1. Create frontend/src/pages/WhatMakesUsSpecial.jsx
-- [x] 2. Add route to frontend/src/App.js
-- [x] 3. Add button to frontend/src/pages/About.jsx
-- [x] 4. Verify at http://localhost:3000/about and /what-makes-us-special
-- [x] 5. Complete
+- [x] Step 1: Create TODO2.md
+- [x] Step 2: Get plan approval
+- [x] Step 3: Remove yellow emoji divs from all 10 cards in WhatMakesUsSpecial.jsx
+- [x] Step 4: Update TODO2.md complete
+- [x] Step 5: attempt_completion

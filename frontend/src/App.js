@@ -11,6 +11,7 @@ import Contact from "@/pages/Contact";
 import Terms from "@/pages/Terms";
 import WhatMakesUsSpecial from "@/pages/WhatMakesUsSpecial";
 import { Toaster } from "@/components/ui/sonner";
+import FAQ from "./pages/FAQ";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/what-makes-us-special" element={<WhatMakesUsSpecial />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
         <Footer />
         <Toaster />

@@ -29,9 +29,7 @@ const WhatMakesUsSpecial = () => {
           {/* Personalized Just for You */}
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">🎨</span>
-              </div>
+
 
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Palette className="w-6 h-6 mr-2 text-[#61525a]" />
@@ -48,10 +46,6 @@ const WhatMakesUsSpecial = () => {
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
 
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">📞</span>
-              </div>
-
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Phone className="w-6 h-6 mr-2 text-[#61525a]" />
                 Smooth and Friendly Communication
@@ -66,10 +60,6 @@ const WhatMakesUsSpecial = () => {
           {/* Surprise Planner */}
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
-
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">🎉</span>
-              </div>
 
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Users className="w-6 h-6 mr-2 text-[#61525a]" />
@@ -86,10 +76,6 @@ const WhatMakesUsSpecial = () => {
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
 
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">✨</span>
-              </div>
-
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Star className="w-6 h-6 mr-2 text-[#61525a]" />
                 Quality of Decor
@@ -104,10 +90,6 @@ const WhatMakesUsSpecial = () => {
           {/* Setup Experience */}
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
-
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">🛠️</span>
-              </div>
 
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Wrench className="w-6 h-6 mr-2 text-[#61525a]" />
@@ -124,10 +106,6 @@ const WhatMakesUsSpecial = () => {
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
 
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">📸</span>
-              </div>
-
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Shield className="w-6 h-6 mr-2 text-[#61525a]" />
                 Your Privacy Matters
@@ -142,10 +120,6 @@ const WhatMakesUsSpecial = () => {
           {/* Transparent Pricing */}
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
-
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">💰</span>
-              </div>
 
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <DollarSign className="w-6 h-6 mr-2 text-[#61525a]" />
@@ -162,10 +136,6 @@ const WhatMakesUsSpecial = () => {
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
 
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">🤍</span>
-              </div>
-
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Heart className="w-6 h-6 mr-2 text-[#61525a]" />
                 Your Special Moment Matters To Us
@@ -181,10 +151,6 @@ const WhatMakesUsSpecial = () => {
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
 
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">📞</span>
-              </div>
-
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <MessageCircle className="w-6 h-6 mr-2 text-[#61525a]" />
                 Immediate Call to Action
@@ -199,10 +165,6 @@ const WhatMakesUsSpecial = () => {
           {/* Post Event Cleaning */}
           <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-8">
-
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl shadow-md mb-6">
-                <span className="text-2xl">🧹</span>
-              </div>
 
               <h3 className="text-2xl font-bold text-[#1a1918] mb-4 flex items-center">
                 <Trash2 className="w-6 h-6 mr-2 text-[#61525a]" />

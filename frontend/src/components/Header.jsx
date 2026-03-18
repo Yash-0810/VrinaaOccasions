@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone, Mail, Instagram } from 'lucide-react';
 import { contactInfo } from '@/mockData';
 
 const Header = () => {
@@ -12,6 +12,7 @@ const Header = () => {
     { name: 'About', path: '/about' },
     { name: 'Events', path: '/events' },
     { name: 'Gallery', path: '/gallery' },
+    { name: 'WMUS', path: '/what-makes-us-special' },
     { name: 'Contact', path: '/contact' }
   ];
 
@@ -26,13 +27,13 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="Vrinaa Occasions Logo" 
-              className="h-20 w-auto transition-all duration-300 group-hover:scale-105"
+              className="w-[200px] h-[80px] object-contain transition-all duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 mx-20">
-            <div className="flex items-center gap-16">
+          <nav className="hidden lg:flex items-center justify-center flex-1 mx-12">
+            <div className="flex items-center gap-10">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -53,16 +54,7 @@ const Header = () => {
           </nav>
 
           {/* Contact Icons - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <a
-              href={contactInfo.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:${contactInfo.phone}`}
               className="p-3 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
@@ -72,10 +64,19 @@ const Header = () => {
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
+              className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href={contactInfo.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5" />
             </a>
           </div>
 
@@ -108,29 +109,29 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <div className="flex items-center space-x-4 pt-6 border-t border-amber-200">
-              <a
-                href={contactInfo.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 text-white hover:scale-110 transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
+            <div className="flex items-center pt-6 border-t border-amber-200 gap-3">
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="p-3 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-110 transition-all duration-300"
+                className="p-3 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
                 aria-label="Phone"
               >
                 <Phone className="w-5 h-5" />
               </a>
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 text-white hover:scale-110 transition-all duration-300"
+                className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href={contactInfo.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 text-white hover:scale-110 hover:shadow-lg transition-all duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </nav>
