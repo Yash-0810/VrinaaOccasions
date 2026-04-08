@@ -186,7 +186,15 @@ const Footer = () => {
             </Link>
 
             <p className="text-[#bbb5ae] text-sm">
-              Managed by: <span className="text-white font-semibold">YTStack</span>
+              Managed by:{" "}
+              <a
+                href="https://ytstack.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white font-semibold hover:underline"
+              >
+                YTStack
+              </a>
             </p>
 
           </div>

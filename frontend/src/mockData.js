@@ -209,10 +209,10 @@ export const aboutContent = {
 };
 
 export const contactInfo = {
-  phone: "+91 9073276092",
+  phone: "+91 8276892783",
   email: "harsh576hya576@gmail.com",
-  instagram: "https://www.instagram.com/shaanvi__era",
-  instagramHandle: "@shaanvi__era",
+  instagram: "https://www.instagram.com/vrinaa.occasions/",
+  instagramHandle: "@vrinaa.occasions",
   location: "Kolkata, West Bengal",
   hours: "Mon - Sun: 9:00 AM - 8:00 PM"
 };
